@@ -9,18 +9,20 @@ function setup() {
 function gameStartScreen() {
   push();
   strokeWeight(0);
-  fill(142, 70, 61);
+  fill(125, 0, 27);
   rect(530, 230, 220, 60, 30);
 
+  fill(15, 4, 4);
+  rect(590, 320, 100, 50, 25);
   pop();
 
   //text
   push();
-  fill(255, 255, 255);
+  fill(219, 209, 199);
   textSize(30);
   text("VIP KOSHKA", 550, 270);
   textSize(20);
-  text("Start", 625, 400);
+  text("Start", 618, 350);
   pop();
 }
 
