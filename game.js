@@ -1,8 +1,8 @@
 var imageStartBackground;
 
 function setup() {
-  createCanvas(800, 800);
-  imageStartBackground = loadImage('startScreenCat.jpg');
+  createCanvas(800, 600);
+  imageStartBackground = loadImage("startScreenCat.jpg");
 }
 
 //Game start
@@ -27,8 +27,6 @@ function gameStartScreen() {
 }
 
 function draw() {
-  image(imageStartBackground, 0, 0, 800, 800);
+  image(imageStartBackground, 0, -50, 800, 800);
   gameStartScreen();
-
-
 }
