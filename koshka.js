@@ -1,297 +1,300 @@
-function nastyKoshka(x, y, s) {
+let koshkaX, koshkaY, koshkaS;
+let stoolX, stoolY, stoolS;
+
+function nastyKoshka(koshkaX, koshkaY, koshkaS) {
     fill(249, 246, 219);
     stroke(150, 136, 89);
     strokeWeight(1);
 
 
     //ears
-    triangle(x - 35 * s, y - 100 * s, x - 30 * s, y - 130 * s, x - 17 * s, y - 115 * s);
-    triangle(x + 35 * s, y - 100 * s, x + 30 * s, y - 130 * s, x + 17 * s, y - 115 * s);
+    triangle(koshkaX - 35 * koshkaS, koshkaY - 100 * koshkaS, koshkaX - 30 * koshkaS, koshkaY - 130 * koshkaS, koshkaX - 17 * koshkaS, koshkaY - 115 * koshkaS);
+    triangle(koshkaX + 35 * koshkaS, koshkaY - 100 * koshkaS, koshkaX + 30 * koshkaS, koshkaY - 130 * koshkaS, koshkaX + 17 * koshkaS, koshkaY - 115 * koshkaS);
     
     //red ears
     fill(196, 106, 80);
-    triangle(x - 33 * s, y - 95 * s, x - 28 * s, y - 123 * s, x - 18 * s, y - 110 * s);
-    triangle(x + 33 * s, y - 95 * s, x + 28 * s, y - 123 * s, x + 18 * s, y - 110 * s);
+    triangle(koshkaX - 33 * koshkaS, koshkaY - 95 * koshkaS, koshkaX - 28 * koshkaS, koshkaY - 123 * koshkaS, koshkaX - 18 * koshkaS, koshkaY - 110 * koshkaS);
+    triangle(koshkaX + 33 * koshkaS, koshkaY - 95 * koshkaS, koshkaX + 28 * koshkaS, koshkaY - 123 * koshkaS, koshkaX + 18 * koshkaS, koshkaY - 110 * koshkaS);
 
     //body
     //hvost
     fill(245, 241, 208);
     beginShape();
-    vertex(x + 40 * s, y + 40 * s);
-    vertex(x + 80 * s, y + 45 * s);
-    bezierVertex(x + 105 * s, y + 50 * s, x + 115 * s, y + 60 * s, x + 100 * s, y + 75 * s);
-    bezierVertex(x + 85 * s, y + 85 * s, x + 65 * s, y + 85 * s, x + 45 * s, y + 80 *s); 
-    bezierVertex(x + 35 * s, y + 75 * s, x + 35 * s, y + 70 * s, x + 45 * s, y + 67 * s);
-    bezierVertex(x + 100 *s, y + 70 * s, x + 85 * s, y + 60 * s, x + 75 * s, y + 60 * s);
-    bezierVertex(x + 50 * s, y + 60 * s, x + 40 * s, y + 55 * s, x + 35 * s, y + 50 * s);
+    vertex(koshkaX + 40 * koshkaS, koshkaY + 40 * koshkaS);
+    vertex(koshkaX + 80 * koshkaS, koshkaY + 45 * koshkaS);
+    bezierVertex(koshkaX + 105 * koshkaS, koshkaY + 50 * koshkaS, koshkaX + 115 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 100 * koshkaS, koshkaY + 75 * koshkaS);
+    bezierVertex(koshkaX + 85 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 65 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 80 *koshkaS); 
+    bezierVertex(koshkaX + 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 70 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 67 * koshkaS);
+    bezierVertex(koshkaX + 100 *koshkaS, koshkaY + 70 * koshkaS, koshkaX + 85 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 75 * koshkaS, koshkaY + 60 * koshkaS);
+    bezierVertex(koshkaX + 50 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 40 * koshkaS, koshkaY + 55 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 50 * koshkaS);
     endShape();
 
     //zadniy lapy
     beginShape();
-    vertex(x - 30 * s, y + 10 * s);
-    bezierVertex(x - 50 * s, y + 20 * s, x - 50 * s, y + 40 * s, x - 30 * s, y + 65 * s);
-    bezierVertex(x - 35 * s, y + 75 * s, x - 10 * s, y + 75 * s, x - 15 * s, y + 65 * s);
-    vertex(x + 15 * s, y + 65 * s);
-    bezierVertex(x + 10 * s, y + 75 * s, x + 35 * s, y + 75 * s, x + 30 * s, y + 65 * s);
-    bezierVertex(x + 50 * s, y + 40 * s, x + 50 * s, y + 20 * s, x + 30 * s, y + 10 * s);
+    vertex(koshkaX - 30 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX - 50 * koshkaS, koshkaY + 20 * koshkaS, koshkaX - 50 * koshkaS, koshkaY + 40 * koshkaS, koshkaX - 30 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX - 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX - 10 * koshkaS, koshkaY + 75 * koshkaS, koshkaX - 15 * koshkaS, koshkaY + 65 * koshkaS);
+    vertex(koshkaX + 15 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX + 10 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 30 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX + 50 * koshkaS, koshkaY + 40 * koshkaS, koshkaX + 50 * koshkaS, koshkaY + 20 * koshkaS, koshkaX + 30 * koshkaS, koshkaY + 10 * koshkaS);
     endShape(CLOSE);
 
     //peredniy lapy
     fill(249, 246, 219);
     beginShape();
-    vertex(x - 20 * s, y - 60 * s);
-    bezierVertex(x - 40 * s, y - 10 * s, x - 40 * s, y - 20 * s, x - 20 * s, y + 70 * s);
-    bezierVertex(x - 25 * s, y + 80 * s, x, y + 80 * s, x - 5 * s, y + 70 * s);
-    vertex(x - 5 * s, y + 30 * s);
-    bezierVertex(x - 5 * s, y + 10 * s, x + 5 * s, y + 10 * s, x + 5 * s, y + 30 * s);
-    vertex(x + 5 * s, y + 70 * s);
-    bezierVertex(x, y + 80 * s, x + 25 * s, y + 80 * s, x + 20 * s, y + 70 * s);
-    bezierVertex(x + 40 * s, y - 20 * s, x + 40 * s, y - 10 * s, x + 20 * s, y - 60 * s);
+    vertex(koshkaX - 20 * koshkaS, koshkaY - 60 * koshkaS);
+    bezierVertex(koshkaX - 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 40 * koshkaS, koshkaY - 20 * koshkaS, koshkaX - 20 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX - 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX, koshkaY + 80 * koshkaS, koshkaX - 5 * koshkaS, koshkaY + 70 * koshkaS);
+    vertex(koshkaX - 5 * koshkaS, koshkaY + 30 * koshkaS);
+    bezierVertex(koshkaX - 5 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 30 * koshkaS);
+    vertex(koshkaX + 5 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX, koshkaY + 80 * koshkaS, koshkaX + 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX + 20 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX + 40 * koshkaS, koshkaY - 20 * koshkaS, koshkaX + 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 20 * koshkaS, koshkaY - 60 * koshkaS);
     endShape(CLOSE);
 
     // head
     fill(249, 246, 219);
     beginShape();
-    vertex(x - 35 * s, y - 50 * s);
-    bezierVertex(x - 45 * s, y - 60 * s, x - 45 * s, y - 80* s, x - 35 * s, y - 100 * s);
-    bezierVertex(x - 15 * s, y - 130 * s, x + 25 * s, y - 120 * s, x + 35 * s, y - 100 * s);
-    bezierVertex(x + 45 * s, y - 80 * s, x + 45 * s, y - 60 * s, x + 35 * s, y - 50 * s);
-    bezierVertex(x + 25 * s, y - 30 * s, x - 25 * s, y - 30 * s, x - 35 * s, y - 50 * s);
+    vertex(koshkaX - 35 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 45 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 45 * koshkaS, koshkaY - 80* koshkaS, koshkaX - 35 * koshkaS, koshkaY - 100 * koshkaS);
+    bezierVertex(koshkaX - 15 * koshkaS, koshkaY - 130 * koshkaS, koshkaX + 25 * koshkaS, koshkaY - 120 * koshkaS, koshkaX + 35 * koshkaS, koshkaY - 100 * koshkaS);
+    bezierVertex(koshkaX + 45 * koshkaS, koshkaY - 80 * koshkaS, koshkaX + 45 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 35 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 25 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 25 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 35 * koshkaS, koshkaY - 50 * koshkaS);
     endShape();
     
     //face
     noStroke();
     fill(0, 0, 0);
-    ellipse(x - 17 * s, y - 85 * s, 12 * s);
-    ellipse(x + 17 * s, y - 85 * s, 12 * s);
+    ellipse(koshkaX - 17 * koshkaS, koshkaY - 85 * koshkaS, 12 * koshkaS);
+    ellipse(koshkaX + 17 * koshkaS, koshkaY - 85 * koshkaS, 12 * koshkaS);
 
     fill(255, 255, 255);
-    ellipse(x - 15 * s, y - 87 * s, 4 * s);
-    ellipse(x + 19 * s, y - 87 * s, 4 * s);
+    ellipse(koshkaX - 15 * koshkaS, koshkaY - 87 * koshkaS, 4 * koshkaS);
+    ellipse(koshkaX + 19 * koshkaS, koshkaY - 87 * koshkaS, 4 * koshkaS);
 
     //nose
     fill(196, 106, 80);
     beginShape();
-    vertex(x, y - 69 * s);
-    bezierVertex(x - 4 * s, y - 71 * s, x - 6 * s, y - 69 * s, x, y - 62 * s);
-    bezierVertex(x - 5 * s, y - 70 * s, x - 5 * s, y - 70 * s, x, y - 62 * s);
-    bezierVertex(x + 6 * s, y - 69 * s, x + 4 * s, y - 71 * s,  x, y - 69 * s);
+    vertex(koshkaX, koshkaY - 69 * koshkaS);
+    bezierVertex(koshkaX - 4 * koshkaS, koshkaY - 71 * koshkaS, koshkaX - 6 * koshkaS, koshkaY - 69 * koshkaS, koshkaX, koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX - 5 * koshkaS, koshkaY - 70 * koshkaS, koshkaX - 5 * koshkaS, koshkaY - 70 * koshkaS, koshkaX, koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX + 6 * koshkaS, koshkaY - 69 * koshkaS, koshkaX + 4 * koshkaS, koshkaY - 71 * koshkaS,  koshkaX, koshkaY - 69 * koshkaS);
     endShape();
 
     //mouth
     beginShape();
     stroke(196, 106, 80);
     strokeWeight(1);
-    vertex(x, y - 63 * s);
-    bezierVertex(x, y - 58 * s, x - 10 * s, y - 58 * s, x - 10 * s,  y - 62 * s);
-    bezierVertex(x - 10 * s, y - 57 * s, x, y - 57 * s,  x,  y - 63 * s);
+    vertex(koshkaX, koshkaY - 63 * koshkaS);
+    bezierVertex(koshkaX, koshkaY - 58 * koshkaS, koshkaX - 10 * koshkaS, koshkaY - 58 * koshkaS, koshkaX - 10 * koshkaS,  koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX - 10 * koshkaS, koshkaY - 57 * koshkaS, koshkaX, koshkaY - 57 * koshkaS,  koshkaX,  koshkaY - 63 * koshkaS);
     endShape();
 
     beginShape();
-    vertex(x, y - 63 * s);
-    bezierVertex(x, y - 58 * s, x + 10 * s, y - 58 * s, x + 10 * s,  y - 62 * s);
-    bezierVertex(x + 10 * s, y - 57 * s, x, y - 57 * s,  x,  y - 63 * s);
+    vertex(koshkaX, koshkaY - 63 * koshkaS);
+    bezierVertex(koshkaX, koshkaY - 58 * koshkaS, koshkaX + 10 * koshkaS, koshkaY - 58 * koshkaS, koshkaX + 10 * koshkaS,  koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX + 10 * koshkaS, koshkaY - 57 * koshkaS, koshkaX, koshkaY - 57 * koshkaS,  koshkaX,  koshkaY - 63 * koshkaS);
     endShape();
 
     noStroke();
     fill(133, 173, 40);
     beginShape();
-    vertex(x - 60 * s, y + 10 * s);
-    bezierVertex(x - 75 * s, y + 10 * s, x - 75 * s, y - 10 * s, x - 60 * s, y - 10 * s);
-    bezierVertex(x - 45 * s, y - 10 * s, x - 50 * s, y - 30 * s, x - 60 * s, y - 30 * s);
-    bezierVertex(x - 75 * s, y - 30 * s, x - 75 * s, y - 50 * s, x - 60 * s, y - 50 * s);
-    bezierVertex(x - 60 * s, y - 60 * s, x - 60 * s, y - 60 * s, x - 65 * s, y - 70 * s);
-    bezierVertex(x - 55 * s, y - 60 * s, x - 55 * s, y - 60 * s, x - 58 * s, y - 50 * s);
-    bezierVertex(x - 70 * s, y - 50 * s, x - 70 * s, y - 30 * s, x - 55 * s, y - 30 * s);
-    bezierVertex(x - 45 * s, y - 30 * s, x - 40 * s, y - 10 * s, x - 55 * s, y - 10 * s);
-    bezierVertex(x - 70 * s, y - 10 * s, x - 70 * s, y + 10 * s, x - 55 * s, y + 10 * s);
+    vertex(koshkaX - 60 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX - 75 * koshkaS, koshkaY + 10 * koshkaS, koshkaX - 75 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 60 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX - 45 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 50 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 60 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX - 75 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 75 * koshkaS, koshkaY - 50 * koshkaS, koshkaX - 60 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 60 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 60 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 65 * koshkaS, koshkaY - 70 * koshkaS);
+    bezierVertex(koshkaX - 55 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 55 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 58 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 70 * koshkaS, koshkaY - 50 * koshkaS, koshkaX - 70 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 55 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX - 45 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 55 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX - 70 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 70 * koshkaS, koshkaY + 10 * koshkaS, koshkaX - 55 * koshkaS, koshkaY + 10 * koshkaS);
     endShape();
 
     beginShape();
-    vertex(x - 110 * s, y + 10 * s);
-    bezierVertex(x - 125 * s, y + 10 * s, x - 125 * s, y - 10 * s, x - 110 * s, y - 10 * s);
-    bezierVertex(x - 95 * s, y - 10 * s, x - 100 * s, y - 30 * s, x - 110 * s, y - 30 * s);
-    bezierVertex(x - 125 * s, y - 30 * s, x - 125 * s, y - 50 * s, x - 110 * s, y - 50 * s);
-    bezierVertex(x - 110 * s, y - 60 * s, x - 110 * s, y - 60 * s, x - 115 * s, y - 70 * s);
-    bezierVertex(x - 105 * s, y - 60 * s, x - 105 * s, y - 60 * s, x - 108 * s, y - 50 * s);
-    bezierVertex(x - 120 * s, y - 50 * s, x - 120 * s, y - 30 * s, x - 105 * s, y - 30 * s);
-    bezierVertex(x - 95 * s, y - 30 * s, x - 90 * s, y - 10 * s, x - 105 * s, y - 10 * s);
-    bezierVertex(x - 120 * s, y - 10 * s, x - 120 * s, y + 10 * s, x - 105 * s, y + 10 * s);
+    vertex(koshkaX - 110 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX - 125 * koshkaS, koshkaY + 10 * koshkaS, koshkaX - 125 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 110 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX - 95 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 100 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 110 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX - 125 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 125 * koshkaS, koshkaY - 50 * koshkaS, koshkaX - 110 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 110 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 110 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 115 * koshkaS, koshkaY - 70 * koshkaS);
+    bezierVertex(koshkaX - 105 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 105 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 108 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 120 * koshkaS, koshkaY - 50 * koshkaS, koshkaX - 120 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 105 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX - 95 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 90 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 105 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX - 120 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 120 * koshkaS, koshkaY + 10 * koshkaS, koshkaX - 105 * koshkaS, koshkaY + 10 * koshkaS);
     endShape();
 
     beginShape();
-    vertex(x + 60 * s, y + 10 * s);
-    bezierVertex(x + 75 * s, y + 10 * s, x + 75 * s, y - 10 * s, x + 60 * s, y - 10 * s);
-    bezierVertex(x + 45 * s, y - 10 * s, x + 50 * s, y - 30 * s, x + 60 * s, y - 30 * s);
-    bezierVertex(x + 75 * s, y - 30 * s, x + 75 * s, y - 50 * s, x + 60 * s, y - 50 * s);
-    bezierVertex(x + 60 * s, y - 60 * s, x + 60 * s, y - 60 * s, x + 65 * s, y - 70 * s);
-    bezierVertex(x + 55 * s, y - 60 * s, x + 55 * s, y - 60 * s, x + 58 * s, y - 50 * s);
-    bezierVertex(x + 70 * s, y - 50 * s, x + 70 * s, y - 30 * s, x + 55 * s, y - 30 * s);
-    bezierVertex(x + 45 * s, y - 30 * s, x + 40 * s, y - 10 * s, x + 55 * s, y - 10 * s);
-    bezierVertex(x + 70 * s, y - 10 * s, x + 70 * s, y + 10 * s, x + 55 * s, y + 10 * s);
+    vertex(koshkaX + 60 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX + 75 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 75 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 60 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX + 45 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 50 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 60 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX + 75 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 75 * koshkaS, koshkaY - 50 * koshkaS, koshkaX + 60 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 60 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 60 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 65 * koshkaS, koshkaY - 70 * koshkaS);
+    bezierVertex(koshkaX + 55 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 55 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 58 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 70 * koshkaS, koshkaY - 50 * koshkaS, koshkaX + 70 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 55 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX + 45 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 55 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX + 70 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 70 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 55 * koshkaS, koshkaY + 10 * koshkaS);
     endShape();
 
     beginShape();
-    vertex(x + 110 * s, y + 10 * s);
-    bezierVertex(x + 125 * s, y + 10 * s, x + 125 * s, y - 10 * s, x + 110 * s, y - 10 * s);
-    bezierVertex(x + 95 * s, y - 10 * s, x + 100 * s, y - 30 * s, x + 110 * s, y - 30 * s);
-    bezierVertex(x + 125 * s, y - 30 * s, x + 125 * s, y - 50 * s, x + 110 * s, y - 50 * s);
-    bezierVertex(x + 110 * s, y - 60 * s, x + 110 * s, y - 60 * s, x + 115 * s, y - 70 * s);
-    bezierVertex(x + 105 * s, y - 60 * s, x + 105 * s, y - 60 * s, x + 108 * s, y - 50 * s);
-    bezierVertex(x + 120 * s, y - 50 * s, x + 120 * s, y - 30 * s, x + 105 * s, y - 30 * s);
-    bezierVertex(x + 95 * s, y - 30 * s, x + 90 * s, y - 10 * s, x + 105 * s, y - 10 * s);
-    bezierVertex(x + 120 * s, y - 10 * s, x + 120 * s, y + 10 * s, x + 105 * s, y + 10 * s);
+    vertex(koshkaX + 110 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX + 125 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 125 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 110 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX + 95 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 100 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 110 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX + 125 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 125 * koshkaS, koshkaY - 50 * koshkaS, koshkaX + 110 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 110 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 110 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 115 * koshkaS, koshkaY - 70 * koshkaS);
+    bezierVertex(koshkaX + 105 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 105 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 108 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 120 * koshkaS, koshkaY - 50 * koshkaS, koshkaX + 120 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 105 * koshkaS, koshkaY - 30 * koshkaS);
+    bezierVertex(koshkaX + 95 * koshkaS, koshkaY - 30 * koshkaS, koshkaX + 90 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 105 * koshkaS, koshkaY - 10 * koshkaS);
+    bezierVertex(koshkaX + 120 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 120 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 105 * koshkaS, koshkaY + 10 * koshkaS);
     endShape();
 
     //mud
     fill(150, 136, 89);
     stroke(117, 105, 65);
 
-    ellipse(x - 24 * s, y + 69 * s, 15 * s, 10 * s);
-    ellipse(x + 24 * s, y + 69 * s, 15 * s, 10 * s);
+    ellipse(koshkaX - 24 * koshkaS, koshkaY + 69 * koshkaS, 15 * koshkaS, 10 * koshkaS);
+    ellipse(koshkaX + 24 * koshkaS, koshkaY + 69 * koshkaS, 15 * koshkaS, 10 * koshkaS);
 
     beginShape();
-    vertex(x - 29 * s, y + 30 * s);
-    bezierVertex(x - 25 * s, y + 15 * s, x - 5 * s, y + 15 * s, x - 5 * s, y + 30 * s);
-    vertex(x - 5 * s, y + 70 * s);
-    bezierVertex(x, y + 80 * s, x - 25 * s, y + 80 * s, x - 20 * s, y + 70 * s);
+    vertex(koshkaX - 29 * koshkaS, koshkaY + 30 * koshkaS);
+    bezierVertex(koshkaX - 25 * koshkaS, koshkaY + 15 * koshkaS, koshkaX - 5 * koshkaS, koshkaY + 15 * koshkaS, koshkaX - 5 * koshkaS, koshkaY + 30 * koshkaS);
+    vertex(koshkaX - 5 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX, koshkaY + 80 * koshkaS, koshkaX - 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX - 20 * koshkaS, koshkaY + 70 * koshkaS);
     endShape(CLOSE);
 
     beginShape();
-    vertex(x + 29 * s, y + 30 * s);
-    bezierVertex(x + 25 * s, y + 15 * s, x + 5 * s, y + 15 * s, x + 5 * s, y + 30 * s);
-    vertex(x + 5 * s, y + 70 * s);
-    bezierVertex(x, y + 80 * s, x + 25 * s, y + 80 * s, x + 20 * s, y + 70 * s);
+    vertex(koshkaX + 29 * koshkaS, koshkaY + 30 * koshkaS);
+    bezierVertex(koshkaX + 25 * koshkaS, koshkaY + 15 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 15 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 30 * koshkaS);
+    vertex(koshkaX + 5 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX, koshkaY + 80 * koshkaS, koshkaX + 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX + 20 * koshkaS, koshkaY + 70 * koshkaS);
     endShape(CLOSE);
 
     beginShape();
-    vertex(x + 100 * s, y + 75 * s);
-    bezierVertex(x + 85 * s, y + 85 * s, x + 65 * s, y + 85 * s, x + 45 * s, y + 80 *s); 
-    bezierVertex(x + 35 * s, y + 75 * s, x + 35 * s, y + 70 * s, x + 45 * s, y + 67 * s);
-    vertex(x + 75 * s, y + 66 * s);
-    bezierVertex(x + 95 * s, y + 68 * s, x + 100 * s, y + 70 * s, x + 100 * s, y + 75 * s);
+    vertex(koshkaX + 100 * koshkaS, koshkaY + 75 * koshkaS);
+    bezierVertex(koshkaX + 85 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 65 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 80 *koshkaS); 
+    bezierVertex(koshkaX + 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 70 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 67 * koshkaS);
+    vertex(koshkaX + 75 * koshkaS, koshkaY + 66 * koshkaS);
+    bezierVertex(koshkaX + 95 * koshkaS, koshkaY + 68 * koshkaS, koshkaX + 100 * koshkaS, koshkaY + 70 * koshkaS, koshkaX + 100 * koshkaS, koshkaY + 75 * koshkaS);
     endShape();
 }
 
-function cleanKoshka(x, y, s) {
+function cleanKoshka(koshkaX, koshkaY, koshkaS) {
     fill(249, 246, 219);
     stroke(150, 136, 89);
     strokeWeight(1);
 
 
     //ears
-    triangle(x - 35 * s, y - 100 * s, x - 30 * s, y - 130 * s, x - 17 * s, y - 115 * s);
-    triangle(x + 35 * s, y - 100 * s, x + 30 * s, y - 130 * s, x + 17 * s, y - 115 * s);
+    triangle(koshkaX - 35 * koshkaS, koshkaY - 100 * koshkaS, koshkaX - 30 * koshkaS, koshkaY - 130 * koshkaS, koshkaX - 17 * koshkaS, koshkaY - 115 * koshkaS);
+    triangle(koshkaX + 35 * koshkaS, koshkaY - 100 * koshkaS, koshkaX + 30 * koshkaS, koshkaY - 130 * koshkaS, koshkaX + 17 * koshkaS, koshkaY - 115 * koshkaS);
     
     //red ears
     fill(196, 106, 80);
-    triangle(x - 33 * s, y - 95 * s, x - 28 * s, y - 123 * s, x - 18 * s, y - 110 * s);
-    triangle(x + 33 * s, y - 95 * s, x + 28 * s, y - 123 * s, x + 18 * s, y - 110 * s);
+    triangle(koshkaX - 33 * koshkaS, koshkaY - 95 * koshkaS, koshkaX - 28 * koshkaS, koshkaY - 123 * koshkaS, koshkaX - 18 * koshkaS, koshkaY - 110 * koshkaS);
+    triangle(koshkaX + 33 * koshkaS, koshkaY - 95 * koshkaS, koshkaX + 28 * koshkaS, koshkaY - 123 * koshkaS, koshkaX + 18 * koshkaS, koshkaY - 110 * koshkaS);
 
     //body
     //hvost
     fill(245, 241, 208);
     beginShape();
-    vertex(x + 40 * s, y + 40 * s);
-    vertex(x + 80 * s, y + 45 * s);
-    bezierVertex(x + 105 * s, y + 50 * s, x + 115 * s, y + 60 * s, x + 100 * s, y + 75 * s);
-    bezierVertex(x + 85 * s, y + 85 * s, x + 65 * s, y + 85 * s, x + 45 * s, y + 80 *s); 
-    bezierVertex(x + 35 * s, y + 75 * s, x + 35 * s, y + 70 * s, x + 45 * s, y + 67 * s);
-    bezierVertex(x + 100 *s, y + 70 * s, x + 85 * s, y + 60 * s, x + 75 * s, y + 60 * s);
-    bezierVertex(x + 50 * s, y + 60 * s, x + 40 * s, y + 55 * s, x + 35 * s, y + 50 * s);
+    vertex(koshkaX + 40 * koshkaS, koshkaY + 40 * koshkaS);
+    vertex(koshkaX + 80 * koshkaS, koshkaY + 45 * koshkaS);
+    bezierVertex(koshkaX + 105 * koshkaS, koshkaY + 50 * koshkaS, koshkaX + 115 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 100 * koshkaS, koshkaY + 75 * koshkaS);
+    bezierVertex(koshkaX + 85 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 65 * koshkaS, koshkaY + 85 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 80 *koshkaS); 
+    bezierVertex(koshkaX + 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 70 * koshkaS, koshkaX + 45 * koshkaS, koshkaY + 67 * koshkaS);
+    bezierVertex(koshkaX + 100 *koshkaS, koshkaY + 70 * koshkaS, koshkaX + 85 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 75 * koshkaS, koshkaY + 60 * koshkaS);
+    bezierVertex(koshkaX + 50 * koshkaS, koshkaY + 60 * koshkaS, koshkaX + 40 * koshkaS, koshkaY + 55 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 50 * koshkaS);
     endShape();
 
     //zadniy lapy
     beginShape();
-    vertex(x - 30 * s, y + 10 * s);
-    bezierVertex(x - 50 * s, y + 20 * s, x - 50 * s, y + 40 * s, x - 30 * s, y + 65 * s);
-    bezierVertex(x - 35 * s, y + 75 * s, x - 10 * s, y + 75 * s, x - 15 * s, y + 65 * s);
-    vertex(x + 15 * s, y + 65 * s);
-    bezierVertex(x + 10 * s, y + 75 * s, x + 35 * s, y + 75 * s, x + 30 * s, y + 65 * s);
-    bezierVertex(x + 50 * s, y + 40 * s, x + 50 * s, y + 20 * s, x + 30 * s, y + 10 * s);
+    vertex(koshkaX - 30 * koshkaS, koshkaY + 10 * koshkaS);
+    bezierVertex(koshkaX - 50 * koshkaS, koshkaY + 20 * koshkaS, koshkaX - 50 * koshkaS, koshkaY + 40 * koshkaS, koshkaX - 30 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX - 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX - 10 * koshkaS, koshkaY + 75 * koshkaS, koshkaX - 15 * koshkaS, koshkaY + 65 * koshkaS);
+    vertex(koshkaX + 15 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX + 10 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 35 * koshkaS, koshkaY + 75 * koshkaS, koshkaX + 30 * koshkaS, koshkaY + 65 * koshkaS);
+    bezierVertex(koshkaX + 50 * koshkaS, koshkaY + 40 * koshkaS, koshkaX + 50 * koshkaS, koshkaY + 20 * koshkaS, koshkaX + 30 * koshkaS, koshkaY + 10 * koshkaS);
     endShape(CLOSE);
 
     //peredniy lapy
     fill(249, 246, 219);
     beginShape();
-    vertex(x - 20 * s, y - 60 * s);
-    bezierVertex(x - 40 * s, y - 10 * s, x - 40 * s, y - 20 * s, x - 20 * s, y + 70 * s);
-    bezierVertex(x - 25 * s, y + 80 * s, x, y + 80 * s, x - 5 * s, y + 70 * s);
-    vertex(x - 5 * s, y + 30 * s);
-    bezierVertex(x - 5 * s, y + 10 * s, x + 5 * s, y + 10 * s, x + 5 * s, y + 30 * s);
-    vertex(x + 5 * s, y + 70 * s);
-    bezierVertex(x, y + 80 * s, x + 25 * s, y + 80 * s, x + 20 * s, y + 70 * s);
-    bezierVertex(x + 40 * s, y - 20 * s, x + 40 * s, y - 10 * s, x + 20 * s, y - 60 * s);
+    vertex(koshkaX - 20 * koshkaS, koshkaY - 60 * koshkaS);
+    bezierVertex(koshkaX - 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX - 40 * koshkaS, koshkaY - 20 * koshkaS, koshkaX - 20 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX - 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX, koshkaY + 80 * koshkaS, koshkaX - 5 * koshkaS, koshkaY + 70 * koshkaS);
+    vertex(koshkaX - 5 * koshkaS, koshkaY + 30 * koshkaS);
+    bezierVertex(koshkaX - 5 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 10 * koshkaS, koshkaX + 5 * koshkaS, koshkaY + 30 * koshkaS);
+    vertex(koshkaX + 5 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX, koshkaY + 80 * koshkaS, koshkaX + 25 * koshkaS, koshkaY + 80 * koshkaS, koshkaX + 20 * koshkaS, koshkaY + 70 * koshkaS);
+    bezierVertex(koshkaX + 40 * koshkaS, koshkaY - 20 * koshkaS, koshkaX + 40 * koshkaS, koshkaY - 10 * koshkaS, koshkaX + 20 * koshkaS, koshkaY - 60 * koshkaS);
     endShape(CLOSE);
 
     // head
     fill(249, 246, 219);
     beginShape();
-    vertex(x - 35 * s, y - 50 * s);
-    bezierVertex(x - 45 * s, y - 60 * s, x - 45 * s, y - 80* s, x - 35 * s, y - 100 * s);
-    bezierVertex(x - 15 * s, y - 130 * s, x + 25 * s, y - 120 * s, x + 35 * s, y - 100 * s);
-    bezierVertex(x + 45 * s, y - 80 * s, x + 45 * s, y - 60 * s, x + 35 * s, y - 50 * s);
-    bezierVertex(x + 25 * s, y - 30 * s, x - 25 * s, y - 30 * s, x - 35 * s, y - 50 * s);
+    vertex(koshkaX - 35 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX - 45 * koshkaS, koshkaY - 60 * koshkaS, koshkaX - 45 * koshkaS, koshkaY - 80* koshkaS, koshkaX - 35 * koshkaS, koshkaY - 100 * koshkaS);
+    bezierVertex(koshkaX - 15 * koshkaS, koshkaY - 130 * koshkaS, koshkaX + 25 * koshkaS, koshkaY - 120 * koshkaS, koshkaX + 35 * koshkaS, koshkaY - 100 * koshkaS);
+    bezierVertex(koshkaX + 45 * koshkaS, koshkaY - 80 * koshkaS, koshkaX + 45 * koshkaS, koshkaY - 60 * koshkaS, koshkaX + 35 * koshkaS, koshkaY - 50 * koshkaS);
+    bezierVertex(koshkaX + 25 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 25 * koshkaS, koshkaY - 30 * koshkaS, koshkaX - 35 * koshkaS, koshkaY - 50 * koshkaS);
     endShape();
     
     //face
     noStroke();
     fill(0, 0, 0);
-    ellipse(x - 17 * s, y - 85 * s, 12 * s);
-    ellipse(x + 17 * s, y - 85 * s, 12 * s);
+    ellipse(koshkaX - 17 * koshkaS, koshkaY - 85 * koshkaS, 12 * koshkaS);
+    ellipse(koshkaX + 17 * koshkaS, koshkaY - 85 * koshkaS, 12 * koshkaS);
 
     fill(255, 255, 255);
-    ellipse(x - 15 * s, y - 87 * s, 4 * s);
-    ellipse(x + 19 * s, y - 87 * s, 4 * s);
+    ellipse(koshkaX - 15 * koshkaS, koshkaY - 87 * koshkaS, 4 * koshkaS);
+    ellipse(koshkaX + 19 * koshkaS, koshkaY - 87 * koshkaS, 4 * koshkaS);
 
     //nose
     fill(196, 106, 80);
     beginShape();
-    vertex(x, y - 69 * s);
-    bezierVertex(x - 4 * s, y - 71 * s, x - 6 * s, y - 69 * s, x, y - 62 * s);
-    bezierVertex(x - 5 * s, y - 70 * s, x - 5 * s, y - 70 * s, x, y - 62 * s);
-    bezierVertex(x + 6 * s, y - 69 * s, x + 4 * s, y - 71 * s,  x, y - 69 * s);
+    vertex(koshkaX, koshkaY - 69 * koshkaS);
+    bezierVertex(koshkaX - 4 * koshkaS, koshkaY - 71 * koshkaS, koshkaX - 6 * koshkaS, koshkaY - 69 * koshkaS, koshkaX, koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX - 5 * koshkaS, koshkaY - 70 * koshkaS, koshkaX - 5 * koshkaS, koshkaY - 70 * koshkaS, koshkaX, koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX + 6 * koshkaS, koshkaY - 69 * koshkaS, koshkaX + 4 * koshkaS, koshkaY - 71 * koshkaS,  koshkaX, koshkaY - 69 * koshkaS);
     endShape();
 
     //mouth
     beginShape();
     stroke(196, 106, 80);
     strokeWeight(1);
-    vertex(x, y - 63 * s);
-    bezierVertex(x, y - 58 * s, x - 10 * s, y - 58 * s, x - 10 * s,  y - 62 * s);
-    bezierVertex(x - 10 * s, y - 57 * s, x, y - 57 * s,  x,  y - 63 * s);
+    vertex(koshkaX, koshkaY - 63 * koshkaS);
+    bezierVertex(koshkaX, koshkaY - 58 * koshkaS, koshkaX - 10 * koshkaS, koshkaY - 58 * koshkaS, koshkaX - 10 * koshkaS,  koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX - 10 * koshkaS, koshkaY - 57 * koshkaS, koshkaX, koshkaY - 57 * koshkaS,  koshkaX,  koshkaY - 63 * koshkaS);
     endShape();
 
     beginShape();
-    vertex(x, y - 63 * s);
-    bezierVertex(x, y - 58 * s, x + 10 * s, y - 58 * s, x + 10 * s,  y - 62 * s);
-    bezierVertex(x + 10 * s, y - 57 * s, x, y - 57 * s,  x,  y - 63 * s);
+    vertex(koshkaX, koshkaY - 63 * koshkaS);
+    bezierVertex(koshkaX, koshkaY - 58 * koshkaS, koshkaX + 10 * koshkaS, koshkaY - 58 * koshkaS, koshkaX + 10 * koshkaS,  koshkaY - 62 * koshkaS);
+    bezierVertex(koshkaX + 10 * koshkaS, koshkaY - 57 * koshkaS, koshkaX, koshkaY - 57 * koshkaS,  koshkaX,  koshkaY - 63 * koshkaS);
     endShape();
 }
 
-function stool(x, y, s) {
+function stool(stoolX, stoolY, stoolS) {
     fill(101, 54, 20);
 
     push();
     noStroke();
-    fill(150);
-    rect(x - 10 * s, y + 160 * s, 20, 100);
+    fill(248, 207, 56);
+    rect(stoolX - 10 * stoolS, stoolY + 160 * stoolS, 20, 100);
     pop();
 
     push();
     noStroke();
-    ellipse(x, y + 150 * s, 220 * s, 75 * s);
-    rect(x - 110 * s, y + 80 * s, 220 * s, 70 * s);
+    ellipse(stoolX, stoolY + 150 * stoolS, 220 * stoolS, 75 * stoolS);
+    rect(stoolX - 110 * stoolS, stoolY + 80 * stoolS, 220 * stoolS, 70 * stoolS);
     pop();
 
     push();
     stroke(0);
-    ellipse(x, y + 80 * s, 220 * s, 75 * s);
+    ellipse(stoolX, stoolY + 80 * stoolS, 220 * stoolS, 75 * stoolS);
     fill(116, 76, 44);
-    ellipse(x, y + 80 * s, 200 * s, 60* s);
+    ellipse(stoolX, stoolY + 80 * stoolS, 200 * stoolS, 60* stoolS);
     pop();
-
 }
+
 
 //table
 function table(x, y, s) {
