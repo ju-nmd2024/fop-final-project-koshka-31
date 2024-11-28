@@ -269,10 +269,35 @@ function cleanKoshka(x, y, s) {
     endShape();
 }
 
+function stool(x, y, s) {
+    fill(101, 54, 20);
+
+    push();
+    noStroke();
+    fill(150);
+    rect(x - 10 * s, y + 160 * s, 20, 100);
+    pop();
+
+    push();
+    noStroke();
+    ellipse(x, y + 150 * s, 220 * s, 75 * s);
+    rect(x - 110 * s, y + 80 * s, 220 * s, 70 * s);
+    pop();
+
+    push();
+    stroke(0);
+    ellipse(x, y + 80 * s, 220 * s, 75 * s);
+    fill(116, 76, 44);
+    ellipse(x, y + 80 * s, 200 * s, 60* s);
+    pop();
+}
+
+
 
 function draw() {
     background(255);
-    nastyKoshka(300, 400, 1);
-    cleanKoshka(600, 400, 1);
+    stool(400, 400, 1);
+    nastyKoshka(400, 400, 1);
+    // cleanKoshka(600, 400, 1);
 }
 
