@@ -3,13 +3,16 @@ let stoolX, stoolY;
 let isDragging = false;
 let magnetismRadius = 50;
 
+var imageBackground;
+
 function setup() {
   createCanvas(800, 600);
+  imageBackground = loadImage('background for koshka game.png');
 
   // Initialize cat properties
-koshkaX = 120;
-koshkaY = 200;
-koshkaS = 0.85; // Scale for nastyKoshka
+  koshkaX = 130;
+  koshkaY = 228;
+  koshkaS = 0.85; // Scale for nastyKoshka
 
   // Initialize table properties
   stoolX = 400;
@@ -218,7 +221,7 @@ function stool(stoolX, stoolY, stoolS) {
 
 
 function draw() {
-  background(200);
+  image(imageBackground, 0, 0, 800, 600);
   stool(400, 400, 0.85);
 
   // Update the cat position
