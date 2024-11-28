@@ -290,13 +290,27 @@ function stool(x, y, s) {
     fill(116, 76, 44);
     ellipse(x, y + 80 * s, 200 * s, 60* s);
     pop();
+
 }
+
+//table
+function table(x, y, s) {
+    stroke(0);
+    fill(101, 54, 20);
+    rect(x - 110 * s, y + 100 * s, 20, 100);
+    rect(x - 60 * s, y + 100 * s, 20, 70);
+    rect(x + 60 * s, y + 100 * s, 20, 100);
+    rect(x + 110 * s, y + 30 * s, 20, 140);
+    quad(x - 110 * s, y + 100 * s, x - 60 * s, y + 30 * s, x + 130 * s, y + 30 * s, x + 80 * s, y + 100 * s);
+}
+
 
 
 
 function draw() {
     background(255);
     stool(400, 400, 1);
+    table(400, 400, 1);
     nastyKoshka(400, 400, 1);
     // cleanKoshka(600, 400, 1);
 }
