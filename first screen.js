@@ -248,7 +248,7 @@ function draw() {
     nastyKoshka(stoolX, stoolY, koshkaS);
 
     noStroke();
-    fill(255, 255, 255);
+    fill(249, 246, 219);
     rect(90, 10, 360, 30, 20);
     fill(0, 0, 0);
     textSize(15);
