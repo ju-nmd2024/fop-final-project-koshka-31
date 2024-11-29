@@ -2,6 +2,8 @@ let koshkaX , koshkaY, koshkaS;
 let stoolX, stoolY;
 let isDragging = false;
 let magnetismRadius = 50;
+let state = "firstScreenPart1";
+
 
 var imageBackground;
 
@@ -221,23 +223,41 @@ function stool(stoolX, stoolY, stoolS) {
 
 
 function draw() {
-  image(imageBackground, 0, 0, 800, 600);
-  stool(400, 400, 0.85);
+  if (state === "firstScreenPart1") {
+    image(imageBackground, 0, 0, 800, 600);
+    stool(stoolX, stoolY, 0.85);
+    nastyKoshka(koshkaX, koshkaY, koshkaS);
 
-  // Update the cat position
-  if (isDragging) {
-    koshkaX = mouseX;
-    koshkaY = mouseY;
+    // Update the cat position
+    if (isDragging) {
+      koshkaX = mouseX;
+      koshkaY = mouseY;
+    }
+    // Check if the cat is within the magnetic radius of the table
+    if (dist(koshkaX, koshkaY, stoolX, stoolY) < magnetismRadius) {
+      koshkaX = stoolX;
+      koshkaY = stoolY;
+    }
+
+    if (dist(koshkaX, koshkaY, stoolX, stoolY) < 1) {
+        state = "firstScreenPart2";
+    }
+  } else if (state === "firstScreenPart2") {
+    image(imageBackground, 0, 0, 800, 600);
+    stool(stoolX, stoolY, 0.85);
+    nastyKoshka(stoolX, stoolY, koshkaS);
+
+    noStroke();
+    fill(255, 255, 255);
+    rect(90, 10, 360, 30, 20);
+    fill(0, 0, 0);
+    textSize(15);
+    text("Good job! You are moving to your next assignment!", 100, 30);
+
+    if (stoolX >= 400) {
+        stoolX += 3;
+    }
   }
-
-  // Check if the cat is within the magnetic radius of the table
-  if (dist(koshkaX, koshkaY, stoolX, stoolY) < magnetismRadius) {
-    koshkaX = stoolX;
-    koshkaY = stoolY;
-  }
-
-  // Draw the cat using the nastyKoshka function
-  nastyKoshka(koshkaX, koshkaY, koshkaS);
 }
 
 function mousePressed() {
