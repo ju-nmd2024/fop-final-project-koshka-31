@@ -3,7 +3,7 @@ let ball;
 let bricks;
 let lives = 3;
 let score = 0;
-let gameState = "start"; 
+let gameState = "start";
 
 function setup() {
   createCanvas(800, 600);
@@ -39,3 +39,109 @@ function endScreen() {
   text("Press ENTER to play again", 800 / 2, 600 / 2 + 50);
 }
 
+// paddle
+class Paddle {
+  constructor() {
+    this.width = 120;
+    this.height = 10;
+    this.x = 400 - this.width / 2;
+    this.y = 560;
+    this.speed = 7;
+  }
+
+  draw() {
+    fill(255);
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  // changing position of paddle with arrows
+  updatePosition() {
+    if (keyIsDown(37)) {
+      this.x -= this.speed;
+    } else if (keyIsDown(39)) {
+      this.x += this.speed;
+    }
+    this.x = constrain(this.x, 0, 800 - this.width);
+  }
+}
+
+// ball
+class Ball {
+  constructor() {
+    // radius
+    this.r = 10;
+    this.reset();
+  }
+
+  // reset the ball to be in the middle of the screen
+  reset() {
+    this.x = 400;
+    this.y = 540;
+    this.xSpeed = random(-3, 3);
+    this.ySpeed = -5;
+  }
+
+  draw() {
+    fill(255);
+    ellipse(this.x, this.y, this.r * 2);
+  }
+
+  // update position of the ball
+  updatePosition() {
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+
+    // does not let the ball to go outside of frame
+    if (this.x < 0 || this.x > 800) {
+      this.xSpeed *= -1;
+    }
+    if (this.y < 0) {
+      this.ySpeed *= -1;
+    }
+  }
+
+  // checks if the player lost a life
+  isOutsideOffScreen() {
+    return this.y > 600;
+  }
+
+  checkCollision(paddle) {
+    if (
+      this.y + this.r > paddle.y &&
+      this.x > paddle.x &&
+      this.x < paddle.x + paddle.width
+    ) {
+      this.ySpeed *= -1;
+      // ensures that only edges touch each other
+      this.y = paddle.y - this.r;
+    }
+  }
+
+  // checks if the ball collides the brick
+  hits(brick) {
+    return (
+      this.x > brick.x &&
+      this.x < brick.x + brick.width &&
+      this.y - this.r < brick.y + brick.height &&
+      this.y + this.r > brick.y
+    );
+  }
+
+  reverse() {
+    this.ySpeed *= -1;
+  }
+}
+
+class Brick {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  show() {
+    fill(255, 0, 0);
+    rect(this.x, this.y, this.width, this.height);
+  }
+}
