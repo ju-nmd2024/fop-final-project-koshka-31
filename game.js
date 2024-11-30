@@ -1,32 +1,41 @@
-var imageStartBackground;
+let paddle;
+let ball;
+let bricks;
+let lives = 3;
+let score = 0;
+let gameState = "start"; 
 
 function setup() {
   createCanvas(800, 600);
-  imageStartBackground = loadImage("startScreenCat.jpg");
-}
-
-//Game start
-function gameStartScreen() {
-  push();
-  strokeWeight(0);
-  fill(125, 0, 27);
-  rect(530, 230, 220, 60, 30);
-
-  fill(15, 4, 4);
-  rect(590, 320, 100, 50, 25);
-  pop();
-
-  //text
-  push();
-  fill(219, 209, 199);
-  textSize(30);
-  text("VIP KOSHKA", 550, 270);
-  textSize(20);
-  text("Start", 618, 350);
-  pop();
 }
 
 function draw() {
-  image(imageStartBackground, 0, -50, 800, 800);
-  gameStartScreen();
+  background(0);
+  if (gameState === "start") {
+    startScreen();
+  } else if (gameState === "game") {
+    playGame();
+  } else if (gameState === "end") {
+    endScreen();
+  }
 }
+
+function startScreen() {
+  fill(255);
+  textAlign(CENTER);
+  textSize(32);
+  text("Breakout Game", 800 / 2, 600 / 2 - 50);
+  textSize(20);
+  text("Press SPACE to start", 800 / 2, 600 / 2);
+}
+
+function endScreen() {
+  fill(255);
+  textAlign(CENTER);
+  textSize(32);
+  text("Game Over", 800 / 2, 600 / 2 - 50);
+  textSize(20);
+  text(`Your Score: ${score}`, 800 / 2, 600 / 2);
+  text("Press ENTER to play again", 800 / 2, 600 / 2 + 50);
+}
+
