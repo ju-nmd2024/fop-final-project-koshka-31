@@ -155,7 +155,7 @@ class Paddle {
 
 class Ball {
   constructor() {
-    this.r = 10;
+    this.r = 25;
     this.reset();
   }
 
@@ -167,8 +167,46 @@ class Ball {
   }
 
   draw() {
-    fill(255);
+    fill(249, 246, 219);
+    stroke(150, 136, 89);
+    strokeWeight(1);
+    triangle(this.x - 25, this.y - 30, this.x - 25, this.y, this.x + 7, this.y - 15);
+    triangle(this.x + 25, this.y - 30, this.x + 25, this.y, this.x - 7, this.y - 15);
     ellipse(this.x, this.y, this.r * 2);
+    //eyes
+    noStroke();
+    fill(0, 0, 0);
+    ellipse(this.x - 12, this.y - 5, 8);
+    ellipse(this.x + 12, this.y - 5, 8);
+
+    fill(255, 255, 255);
+    ellipse(this.x - 11, this.y - 7, 3);
+    ellipse(this.x + 13, this.y - 7, 3);
+
+    //nose
+    fill(196, 106, 80);
+    beginShape();
+    vertex(this.x, this.y);
+    bezierVertex(this.x - 4, this.y - 2, this.x - 6, this.y, this.x, this.y + 7);
+    bezierVertex(this.x - 5, this.y - 1, this.x - 5, this.y - 1, this.x, this.y + 7);
+    bezierVertex(this.x + 6, this.y, this.x + 4, this.y - 2,  this.x, this.y);
+    endShape();
+
+    //mouth
+    beginShape();
+    stroke(196, 106, 80);
+    strokeWeight(1);
+    vertex(this.x, this.y + 6);
+    bezierVertex(this.x, this.y + 11, this.x - 10, this.y + 11, this.x - 10,  this.y + 7);
+    bezierVertex(this.x - 10, this.y + 12, this.x, this.y + 12,  this.x,  this.y + 6);
+    endShape();
+
+    beginShape();
+    vertex(this.x, this.y + 6);
+    bezierVertex(this.x, this.y + 11, this.x + 10, this.y + 11, this.x + 10,  this.y + 7);
+    bezierVertex(this.x + 10, this.y + 12, this.x, this.y + 12,  this.x,  this.y + 6);
+    endShape();
+    
   }
 
   updatePosition() {
