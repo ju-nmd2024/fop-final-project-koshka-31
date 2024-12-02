@@ -39,7 +39,6 @@ function endScreen() {
   text("Press ENTER to play again", 800 / 2, 600 / 2 + 50);
 }
 
-// paddle
 class Paddle {
   constructor() {
     this.width = 120;
@@ -54,26 +53,22 @@ class Paddle {
     rect(this.x, this.y, this.width, this.height);
   }
 
-  // changing position of paddle with arrows
   updatePosition() {
-    if (keyIsDown(37)) {
+    if (keyIsDown(LEFT_ARROW)) {
       this.x -= this.speed;
-    } else if (keyIsDown(39)) {
+    } else if (keyIsDown(RIGHT_ARROW)) {
       this.x += this.speed;
     }
     this.x = constrain(this.x, 0, 800 - this.width);
   }
 }
 
-// ball
 class Ball {
   constructor() {
-    // radius
     this.r = 10;
     this.reset();
   }
 
-  // reset the ball to be in the middle of the screen
   reset() {
     this.x = 400;
     this.y = 540;
@@ -86,12 +81,10 @@ class Ball {
     ellipse(this.x, this.y, this.r * 2);
   }
 
-  // update position of the ball
   updatePosition() {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
-    // does not let the ball to go outside of frame
     if (this.x < 0 || this.x > 800) {
       this.xSpeed *= -1;
     }
@@ -100,8 +93,7 @@ class Ball {
     }
   }
 
-  // checks if the player lost a life
-  isOutsideOffScreen() {
+  isOutsideOfScreen() {
     return this.y > 600;
   }
 
@@ -112,17 +104,15 @@ class Ball {
       this.x < paddle.x + paddle.width
     ) {
       this.ySpeed *= -1;
-      // ensures that only edges touch each other
-      this.y = paddle.y - this.r;
+      this.y = paddle.y - this.r; // Prevent ball from sticking to paddle
     }
   }
 
-  // checks if the ball collides the brick
   hits(brick) {
     return (
       this.x > brick.x &&
-      this.x < brick.x + brick.width &&
-      this.y - this.r < brick.y + brick.height &&
+      this.x < brick.x + brick.w &&
+      this.y - this.r < brick.y + brick.h &&
       this.y + this.r > brick.y
     );
   }
@@ -136,12 +126,12 @@ class Brick {
   constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
-    this.width = w;
-    this.height = h;
+    this.w = w;
+    this.h = h;
   }
 
-  show() {
+  draw() {
     fill(255, 0, 0);
-    rect(this.x, this.y, this.width, this.height);
+    rect(this.x, this.y, this.w, this.h);
   }
 }
