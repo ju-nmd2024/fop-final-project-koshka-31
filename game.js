@@ -4,6 +4,7 @@ let bricks;
 let lives = 3;
 let score = 0;
 let gameState = "start";
+let maxBallSpeed = 7;
 
 function setup() {
   createCanvas(800, 600);
@@ -42,7 +43,6 @@ function endScreen() {
   text("Press ENTER to play again", 400, 350);
 }
 
-
 function playGame() {
   paddle.draw();
   paddle.updatePosition();
@@ -54,16 +54,15 @@ function playGame() {
   // Game Mechanichs
   for (let i = bricks.length - 1; i >= 0; i--) {
     bricks[i].draw();
-    
+
     // check if the ball hits the bricks
     if (ball.hits(bricks[i])) {
-      
       //reversing the direction
       ball.reverse();
-      
+
       //removing the brick because it was hit by the ball
       bricks.splice(i, 1);
-    
+
       score++;
       increaseDifficulty();
     }
@@ -71,7 +70,6 @@ function playGame() {
 
   displayScoreAndLives();
 
-  
   // for when the ball is outside of screen
   if (ball.isOutsideOfScreen()) {
     lives--;
@@ -106,22 +104,24 @@ function resetGame() {
   gameState = "game";
 }
 
-// creating bricks 
+// creating bricks
 function createBricks() {
   let bricks = [];
   let brickWidth = 80;
   let brickHeight = 20;
-  
+
   // create bricks for fixed number of bricks
-  // the next 5 lines the code was used and changed from this website: https://editor.p5js.org/aabhay.kashyap/sketches/TpkMpovUj 
+  // the next 5 lines the code was used and changed from this website: https://editor.p5js.org/aabhay.kashyap/sketches/TpkMpovUj
   for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 10; j++) {
-      bricks.push(new Brick(j * brickWidth, i * brickHeight, brickWidth, brickHeight));
+      bricks.push(
+        new Brick(j * brickWidth, i * brickHeight, brickWidth, brickHeight)
+      );
     }
   }
 
   return bricks;
-} 
+}
 
 function displayScoreAndLives() {
   fill(255);
@@ -130,17 +130,16 @@ function displayScoreAndLives() {
   text(`Lives: ${lives}`, 720, 20);
 }
 
-// reduce paddle size when score increases
-// the next 5 lines were taken from the conversation with chatgpt
 function increaseDifficulty() {
   if (score % 5 === 0 && score > 0) {
+    ball.increaseSpeed();
     paddle.reduceSize();
   }
 }
 
 class Paddle {
   constructor() {
-    this.defaultWidth = 120;
+    this.defaultWidth = 150;
     this.height = 10;
     this.x = 400 - this.defaultWidth / 2;
     this.y = 560;
@@ -161,12 +160,11 @@ class Paddle {
     }
     this.x = constrain(this.x, 0, 800 - this.width);
   }
-  
-  // reduce paddle's size
+
   reduceSize() {
     this.width = max(60, this.width - 10);
   }
-  
+
   reset() {
     this.width = this.defaultWidth;
   }
@@ -189,8 +187,22 @@ class Ball {
     fill(249, 246, 219);
     stroke(150, 136, 89);
     strokeWeight(1);
-    triangle(this.x - 25, this.y - 30, this.x - 25, this.y, this.x + 7, this.y - 15);
-    triangle(this.x + 25, this.y - 30, this.x + 25, this.y, this.x - 7, this.y - 15);
+    triangle(
+      this.x - 25,
+      this.y - 30,
+      this.x - 25,
+      this.y,
+      this.x + 7,
+      this.y - 15
+    );
+    triangle(
+      this.x + 25,
+      this.y - 30,
+      this.x + 25,
+      this.y,
+      this.x - 7,
+      this.y - 15
+    );
     ellipse(this.x, this.y, this.r * 2);
     //eyes
     noStroke();
@@ -206,9 +218,23 @@ class Ball {
     fill(196, 106, 80);
     beginShape();
     vertex(this.x, this.y);
-    bezierVertex(this.x - 4, this.y - 2, this.x - 6, this.y, this.x, this.y + 7);
-    bezierVertex(this.x - 5, this.y - 1, this.x - 5, this.y - 1, this.x, this.y + 7);
-    bezierVertex(this.x + 6, this.y, this.x + 4, this.y - 2,  this.x, this.y);
+    bezierVertex(
+      this.x - 4,
+      this.y - 2,
+      this.x - 6,
+      this.y,
+      this.x,
+      this.y + 7
+    );
+    bezierVertex(
+      this.x - 5,
+      this.y - 1,
+      this.x - 5,
+      this.y - 1,
+      this.x,
+      this.y + 7
+    );
+    bezierVertex(this.x + 6, this.y, this.x + 4, this.y - 2, this.x, this.y);
     endShape();
 
     //mouth
@@ -216,16 +242,43 @@ class Ball {
     stroke(196, 106, 80);
     strokeWeight(1);
     vertex(this.x, this.y + 6);
-    bezierVertex(this.x, this.y + 11, this.x - 10, this.y + 11, this.x - 10,  this.y + 7);
-    bezierVertex(this.x - 10, this.y + 12, this.x, this.y + 12,  this.x,  this.y + 6);
+    bezierVertex(
+      this.x,
+      this.y + 11,
+      this.x - 10,
+      this.y + 11,
+      this.x - 10,
+      this.y + 7
+    );
+    bezierVertex(
+      this.x - 10,
+      this.y + 12,
+      this.x,
+      this.y + 12,
+      this.x,
+      this.y + 6
+    );
     endShape();
 
     beginShape();
     vertex(this.x, this.y + 6);
-    bezierVertex(this.x, this.y + 11, this.x + 10, this.y + 11, this.x + 10,  this.y + 7);
-    bezierVertex(this.x + 10, this.y + 12, this.x, this.y + 12,  this.x,  this.y + 6);
+    bezierVertex(
+      this.x,
+      this.y + 11,
+      this.x + 10,
+      this.y + 11,
+      this.x + 10,
+      this.y + 7
+    );
+    bezierVertex(
+      this.x + 10,
+      this.y + 12,
+      this.x,
+      this.y + 12,
+      this.x,
+      this.y + 6
+    );
     endShape();
-    
   }
 
   updatePosition() {
@@ -245,20 +298,33 @@ class Ball {
   }
 
   checkCollision(paddle) {
-    if (this.y + this.r > paddle.y && this.x > paddle.x && this.x < paddle.x + paddle.width) {
+    if (
+      this.y + this.r > paddle.y &&
+      this.x > paddle.x &&
+      this.x < paddle.x + paddle.width
+    ) {
       this.ySpeed *= -1;
       this.y = paddle.y - this.r; // Prevent ball from sticking to paddle
     }
   }
 
   hits(brick) {
-    return (this.x > brick.x && this.x < brick.x + brick.w && this.y - this.r < brick.y + brick.h && this.y + this.r > brick.y);
+    return (
+      this.x > brick.x &&
+      this.x < brick.x + brick.w &&
+      this.y - this.r < brick.y + brick.h &&
+      this.y + this.r > brick.y
+    );
   }
 
   reverse() {
     this.ySpeed *= -1;
   }
 
+  increaseSpeed() {
+    this.ySpeed = constrain(this.ySpeed * 2, -maxBallSpeed, maxBallSpeed);
+    this.xSpeed = constrain(this.xSpeed * 2, -maxBallSpeed, maxBallSpeed);
+  }
 }
 
 class Brick {
