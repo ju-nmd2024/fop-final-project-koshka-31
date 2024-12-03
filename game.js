@@ -63,8 +63,9 @@ function playGame() {
       
       //removing the brick because it was hit by the ball
       bricks.splice(i, 1);
-      
+    
       score++;
+      increaseDifficulty();
     }
   }
 
@@ -101,21 +102,21 @@ function resetGame() {
   score = 0;
   ball.reset();
   bricks = createBricks();
+  paddle.reset();
   gameState = "game";
 }
 
 // creating bricks 
 function createBricks() {
   let bricks = [];
-  let rows = 5;
-  let cols = 10;
   let brickWidth = 80;
   let brickHeight = 20;
   
-  // create bricks for fixed number of bricks 
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      bricks.push(new Brick(col * brickWidth, row * brickHeight, brickWidth, brickHeight));
+  // create bricks for fixed number of bricks
+  // the next 5 lines the code was used and changed from this website: https://editor.p5js.org/aabhay.kashyap/sketches/TpkMpovUj 
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 10; j++) {
+      bricks.push(new Brick(j * brickWidth, i * brickHeight, brickWidth, brickHeight));
     }
   }
 
@@ -129,13 +130,22 @@ function displayScoreAndLives() {
   text(`Lives: ${lives}`, 720, 20);
 }
 
+// reduce paddle size when score increases
+// the next 5 lines were taken from the conversation with chatgpt
+function increaseDifficulty() {
+  if (score % 5 === 0 && score > 0) {
+    paddle.reduceSize();
+  }
+}
+
 class Paddle {
   constructor() {
-    this.width = 120;
+    this.defaultWidth = 120;
     this.height = 10;
-    this.x = 400 - this.width / 2;
+    this.x = 400 - this.defaultWidth / 2;
     this.y = 560;
     this.speed = 7;
+    this.width = this.defaultWidth;
   }
 
   draw() {
@@ -151,6 +161,15 @@ class Paddle {
     }
     this.x = constrain(this.x, 0, 800 - this.width);
   }
+  
+  // reduce paddle's size
+  reduceSize() {
+    this.width = max(60, this.width - 10);
+  }
+  
+  reset() {
+    this.width = this.defaultWidth;
+  }
 }
 
 class Ball {
@@ -163,7 +182,7 @@ class Ball {
     this.x = 400;
     this.y = 540;
     this.xSpeed = random(-3, 3);
-    this.ySpeed = -5;
+    this.ySpeed = -7;
   }
 
   draw() {
@@ -239,6 +258,7 @@ class Ball {
   reverse() {
     this.ySpeed *= -1;
   }
+
 }
 
 class Brick {
