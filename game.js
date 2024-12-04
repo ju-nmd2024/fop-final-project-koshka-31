@@ -1,7 +1,7 @@
 let paddle;
 let ball;
 let bricks;
-let lives = 9;
+let lives = 5;
 let score = 0;
 let gameState = "start";
 let resultMessage = "";
@@ -104,8 +104,8 @@ function playGame() {
 }
 
 function createPowerups() {
+   // after ~5 seconds
   if (time > 500) {
-    // after ~5 seconds
     speedBoostStage1 = true;
   } else if (time > 1000) {
     speedBoostStage2 = true;
@@ -124,7 +124,7 @@ function keyPressed() {
 
 // reset game
 function resetGame() {
-  lives = 9;
+  lives = 5;
   score = 0;
   ball.reset();
   bricks = createBricks();
@@ -162,14 +162,14 @@ function displayScoreAndLives() {
 // reduce paddle size when score increases
 // the next 5 lines were taken from the conversation with chatgpt
 function increaseDifficulty() {
-  if (score % 3 === 0 && score > 0) {
+  if (score % 5 === 0 && score > 0) {
     paddle.reduceSize();
   }
 }
 
 class Paddle {
   constructor() {
-    this.defaultWidth = 120;
+    this.defaultWidth = 150;
     this.height = 10;
     this.x = 400 - this.defaultWidth / 2;
     this.y = 560;
@@ -183,7 +183,7 @@ class Paddle {
   }
 
   updatePosition() {
-    if (time < 2000 || time > 3500) {
+    if (time < 2000 || time > 3000) {
       leftKey = 37;
       rightKey = 39;
     } else {
@@ -242,7 +242,7 @@ class Ball {
     ellipse(this.x + 13, this.y - 7, 3);
 
     //nose
-    fill(196, 106, 80);
+    fill(0, 0, 0);
     beginShape();
     vertex(this.x, this.y);
     bezierVertex(this.x - 4, this.y - 2, this.x - 6, this.y, this.x, this.y + 7);
@@ -252,7 +252,7 @@ class Ball {
 
     //mouth
     beginShape();
-    stroke(196, 106, 80);
+    stroke(0, 0, 0);
     strokeWeight(1);
     vertex(this.x, this.y + 6);
     bezierVertex(this.x, this.y + 11, this.x - 10, this.y + 11, this.x - 10, this.y + 7);
