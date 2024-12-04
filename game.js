@@ -6,6 +6,12 @@ let score = 0;
 let gameState = "start";
 let maxBallSpeed = 7;
 
+let speedBoostStage1 = false;
+let speedBoostStage2 = false;
+let speedBoostStage3 = false;
+
+let time = 0;
+
 function setup() {
   createCanvas(800, 600);
   paddle = new Paddle();
@@ -80,9 +86,24 @@ function playGame() {
     }
   }
 
+  time += 1; // ~1 ms, time = 100 is roughly 1 second
+  text(`time (or frames?): ${time}`, 100, 20);
+  createPowerups();
+
   // when no bricks left
   if (bricks.length === 0) {
     gameState = "end";
+  }
+}
+
+function createPowerups() {
+  if (time > 500) {
+    // after ~5 seconds
+    speedBoostStage1 = true;
+  } else if (time > 1000) {
+    speedBoostStage2 = true;
+  } else if (time > 1500) {
+    speedBoostStage3 = true;
   }
 }
 
@@ -130,16 +151,17 @@ function displayScoreAndLives() {
   text(`Lives: ${lives}`, 720, 20);
 }
 
+// reduce paddle size when score increases
+// the next 5 lines were taken from the conversation with chatgpt
 function increaseDifficulty() {
-  if (score % 5 === 0 && score > 0) {
-    ball.increaseSpeed();
+  if (score % 3 === 0 && score > 0) {
     paddle.reduceSize();
   }
 }
 
 class Paddle {
   constructor() {
-    this.defaultWidth = 150;
+    this.defaultWidth = 120;
     this.height = 10;
     this.x = 400 - this.defaultWidth / 2;
     this.y = 560;
@@ -161,6 +183,7 @@ class Paddle {
     this.x = constrain(this.x, 0, 800 - this.width);
   }
 
+  // reduce paddle's size
   reduceSize() {
     this.width = max(60, this.width - 10);
   }
@@ -285,6 +308,19 @@ class Ball {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
+    if (speedBoostStage1 === true) {
+      this.x += this.xSpeed * 0.2;
+      this.y += this.ySpeed * 0.2;
+    }
+    if (speedBoostStage2 === true) {
+      this.x += this.xSpeed * 0.2;
+      this.y += this.ySpeed * 0.2;
+    }
+    if (speedBoostStage3 === true) {
+      this.x += this.xSpeed * 0.2;
+      this.y += this.ySpeed * 0.2;
+    }
+
     if (this.x < 0 || this.x > 800) {
       this.xSpeed *= -1;
     }
@@ -319,11 +355,6 @@ class Ball {
 
   reverse() {
     this.ySpeed *= -1;
-  }
-
-  increaseSpeed() {
-    this.ySpeed = constrain(this.ySpeed * 2, -maxBallSpeed, maxBallSpeed);
-    this.xSpeed = constrain(this.xSpeed * 2, -maxBallSpeed, maxBallSpeed);
   }
 }
 
