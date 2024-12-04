@@ -1,11 +1,13 @@
 let paddle;
 let ball;
 let bricks;
-let lives = 20;
+let lives = 9;
 let score = 0;
 let gameState = "start";
 let resultMessage = "";
 let maxBallSpeed = 7;
+let leftKey;
+let rightKey;
 
 let speedBoostStage1 = false;
 let speedBoostStage2 = false;
@@ -122,7 +124,7 @@ function keyPressed() {
 
 // reset game
 function resetGame() {
-  lives = 20;
+  lives = 9;
   score = 0;
   ball.reset();
   bricks = createBricks();
@@ -181,13 +183,21 @@ class Paddle {
   }
 
   updatePosition() {
-    if (keyIsDown(37)) {
-      this.x -= this.speed;
-    } else if (keyIsDown(39)) {
-      this.x += this.speed;
+    if (time < 2000 || time > 3500) {
+      leftKey = 37;
+      rightKey = 39;
+    } else {
+      leftKey = 39;
+      rightKey = 37;
     }
-    this.x = constrain(this.x, 0, 800 - this.width);
-  }
+
+      if (keyIsDown(leftKey)) {
+        this.x -= this.speed;
+      } else if (keyIsDown(rightKey)) {
+        this.x += this.speed;
+      }
+      this.x = constrain(this.x, 0, 800 - this.width);
+    }
 
   // reduce paddle's size
   reduceSize() {
