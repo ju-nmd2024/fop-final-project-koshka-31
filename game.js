@@ -1,7 +1,7 @@
 let paddle;
 let ball;
 let bricks;
-let lives = 3;
+let lives = 5;
 let score = 0;
 let gameState = "start";
 let maxBallSpeed = 7;
@@ -79,6 +79,7 @@ function playGame() {
   // for when the ball is outside of screen
   if (ball.isOutsideOfScreen()) {
     lives--;
+    ball.color = color(random(255), random(255), random(255));
     if (lives > 0) {
       ball.reset();
     } else {
@@ -117,7 +118,7 @@ function keyPressed() {
 
 // reset game
 function resetGame() {
-  lives = 3;
+  lives = 5;
   score = 0;
   ball.reset();
   bricks = createBricks();
@@ -196,36 +197,24 @@ class Paddle {
 class Ball {
   constructor() {
     this.r = 25;
+    // the next line was taken fron this website: https://editor.p5js.org/hosken/sketches/I_4VSTotf
+    this.color = color(random(255), random(255), random(255));
     this.reset();
   }
-
+  
   reset() {
     this.x = 400;
     this.y = 540;
-    this.xSpeed = random(-3, 3);
+    this.xSpeed = random(-5, 5);
     this.ySpeed = -7;
   }
 
   draw() {
-    fill(249, 246, 219);
-    stroke(150, 136, 89);
+    fill(this.color);
+    stroke(0);
     strokeWeight(1);
-    triangle(
-      this.x - 25,
-      this.y - 30,
-      this.x - 25,
-      this.y,
-      this.x + 7,
-      this.y - 15
-    );
-    triangle(
-      this.x + 25,
-      this.y - 30,
-      this.x + 25,
-      this.y,
-      this.x - 7,
-      this.y - 15
-    );
+    triangle(this.x - 25, this.y - 30, this.x - 25, this.y, this.x + 7, this.y - 15);
+    triangle(this.x + 25, this.y - 30, this.x + 25, this.y, this.x - 7, this.y - 15);
     ellipse(this.x, this.y, this.r * 2);
     //eyes
     noStroke();
@@ -241,22 +230,8 @@ class Ball {
     fill(196, 106, 80);
     beginShape();
     vertex(this.x, this.y);
-    bezierVertex(
-      this.x - 4,
-      this.y - 2,
-      this.x - 6,
-      this.y,
-      this.x,
-      this.y + 7
-    );
-    bezierVertex(
-      this.x - 5,
-      this.y - 1,
-      this.x - 5,
-      this.y - 1,
-      this.x,
-      this.y + 7
-    );
+    bezierVertex(this.x - 4, this.y - 2, this.x - 6, this.y, this.x, this.y + 7);
+    bezierVertex(this.x - 5, this.y - 1, this.x - 5, this.y - 1, this.x, this.y + 7);
     bezierVertex(this.x + 6, this.y, this.x + 4, this.y - 2, this.x, this.y);
     endShape();
 
@@ -265,42 +240,14 @@ class Ball {
     stroke(196, 106, 80);
     strokeWeight(1);
     vertex(this.x, this.y + 6);
-    bezierVertex(
-      this.x,
-      this.y + 11,
-      this.x - 10,
-      this.y + 11,
-      this.x - 10,
-      this.y + 7
-    );
-    bezierVertex(
-      this.x - 10,
-      this.y + 12,
-      this.x,
-      this.y + 12,
-      this.x,
-      this.y + 6
-    );
+    bezierVertex(this.x, this.y + 11, this.x - 10, this.y + 11, this.x - 10, this.y + 7);
+    bezierVertex(this.x - 10, this.y + 12, this.x, this.y + 12, this.x, this.y + 6);
     endShape();
 
     beginShape();
     vertex(this.x, this.y + 6);
-    bezierVertex(
-      this.x,
-      this.y + 11,
-      this.x + 10,
-      this.y + 11,
-      this.x + 10,
-      this.y + 7
-    );
-    bezierVertex(
-      this.x + 10,
-      this.y + 12,
-      this.x,
-      this.y + 12,
-      this.x,
-      this.y + 6
-    );
+    bezierVertex(this.x,this.y + 11, this.x + 10, this.y + 11, this.x + 10, this.y + 7);
+    bezierVertex(this.x + 10, this.y + 12, this.x, this.y + 12, this.x, this.y + 6);
     endShape();
   }
 
@@ -334,23 +281,14 @@ class Ball {
   }
 
   checkCollision(paddle) {
-    if (
-      this.y + this.r > paddle.y &&
-      this.x > paddle.x &&
-      this.x < paddle.x + paddle.width
-    ) {
+    if (this.y + this.r > paddle.y && this.x > paddle.x && this.x < paddle.x + paddle.width) {
       this.ySpeed *= -1;
-      this.y = paddle.y - this.r; // Prevent ball from sticking to paddle
+      this.y = paddle.y - this.r; 
     }
   }
 
   hits(brick) {
-    return (
-      this.x > brick.x &&
-      this.x < brick.x + brick.w &&
-      this.y - this.r < brick.y + brick.h &&
-      this.y + this.r > brick.y
-    );
+    return (this.x > brick.x && this.x < brick.x + brick.w && this.y - this.r < brick.y + brick.h && this.y + this.r > brick.y);
   }
 
   reverse() {
