@@ -14,20 +14,30 @@ let speedBoostStage2 = false;
 let speedBoostStage3 = false;
 let time = 0;
 
+var startScreenBackground;
+var gameScreenBackground;
+var endScreenBackground;
+
 function setup() {
   createCanvas(800, 600);
   paddle = new Paddle();
   ball = new Ball();
   bricks = createBricks();
+  startScreenBackground = loadImage("startScreenBackground.jpg");
+  gameScreenBackground = loadImage("gameScreenBackground.jpg");
+  endScreenBackground = loadImage("endScreenBackground.jpg");
 }
 
 function draw() {
   background(0);
   if (gameState === "start") {
+    image(startScreenBackground, 0, -200, 800, 800);
     startScreen();
   } else if (gameState === "game") {
+    image(gameScreenBackground, 0, -200, 800, 800);
     playGame();
   } else if (gameState === "end") {
+    image(endScreenBackground, 0, -200, 800, 800);
     endScreen();
   }
 }
@@ -104,7 +114,7 @@ function playGame() {
 }
 
 function createPowerups() {
-   // after ~5 seconds
+  // after ~5 seconds
   if (time > 500) {
     speedBoostStage1 = true;
   } else if (time > 1000) {
@@ -153,7 +163,7 @@ function createBricks() {
 }
 
 function displayScoreAndLives() {
-  fill(255);
+  fill(255, 255, 255);
   textSize(16);
   text(`Score: ${score}`, 10, 20);
   text(`Lives: ${lives}`, 720, 20);
@@ -216,7 +226,7 @@ class Ball {
     this.color = color(random(255), random(255), random(255));
     this.reset();
   }
-  
+
   reset() {
     this.x = 400;
     this.y = 540;
@@ -320,7 +330,11 @@ class Brick {
   }
 
   draw() {
-    fill(255, 0, 0);
+    push();
+    fill(194, 160, 126);
+    strokeWeight(2);
+    stroke(82, 62, 42);
     rect(this.x, this.y, this.w, this.h);
+    pop();
   }
 }
