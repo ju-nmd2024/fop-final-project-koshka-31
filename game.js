@@ -37,28 +37,40 @@ function draw() {
     image(gameScreenBackground, 0, -200, 800, 800);
     playGame();
   } else if (gameState === "end") {
-    image(endScreenBackground, 0, -200, 800, 800);
+    image(endScreenBackground, 0, -115, 800, 800);
     endScreen();
   }
 }
 
 function startScreen() {
-  fill(255);
+  fill(102, 43, 63);
+  stroke(0, 0, 0);
+  rect(300, 65, 230, 89, 10);
+  push();
+  fill(255, 255, 175);
   textAlign(CENTER);
-  textSize(32);
-  text("Breakout Game", 400, 250);
-  textSize(20);
-  text("Press SPACE to start", 400, 300);
+  textSize(28);
+  text("CATVENTURE", 415, 105);
+  textSize(13);
+  text("Press SPACE to start", 415, 135);
+  pop();
 }
 
 function endScreen() {
-  fill(255);
+  fill(102, 43, 63);
+  stroke(0, 0, 0);
+  strokeWeight(2);
+  rect(285, 210, 230, 120, 10);
+  push();
+  fill(255, 255, 175);
   textAlign(CENTER);
-  textSize(32);
+  textSize(30);
   text(resultMessage, 400, 250);
   textSize(20);
-  text(`Your Score: ${score}`, 400, 300);
-  text("Press ENTER to play again", 400, 350);
+  text(`Your Score: ${score}`, 400, 280);
+  textSize(13);
+  text("Press ENTER to play again", 400, 310);
+  pop();
 }
 
 function playGame() {
@@ -103,12 +115,12 @@ function playGame() {
   }
 
   time += 1; // ~1 ms, time = 100 is roughly 1 second
-  text(`time (or frames?): ${time}`, 100, 20);
+  // text(`Time: ${time}`, 50, 20);
   createPowerups();
 
   // when no bricks left
   if (bricks.length === 0) {
-    resultMessage = "Congratulations! You won!";
+    resultMessage = "You won!";
     gameState = "end";
   }
 }
@@ -163,10 +175,12 @@ function createBricks() {
 }
 
 function displayScoreAndLives() {
-  fill(255, 255, 255);
-  textSize(16);
-  text(`Score: ${score}`, 10, 20);
-  text(`Lives: ${lives}`, 720, 20);
+  fill(253, 255, 175);
+  textSize(20);
+  strokeWeight(4);
+  stroke(102, 43, 63);
+  text(`Score: ${score}`, 10, 590);
+  text(`Lives: ${lives}`, 710, 590);
 }
 
 // reduce paddle size when score increases
@@ -188,8 +202,12 @@ class Paddle {
   }
 
   draw() {
-    fill(255);
+    push();
+    fill(102, 43, 63);
+    strokeWeight(2);
+    stroke(253, 255, 175);
     rect(this.x, this.y, this.width, this.height);
+    pop();
   }
 
   updatePosition() {
@@ -236,8 +254,8 @@ class Ball {
 
   draw() {
     fill(this.color);
-    stroke(0);
-    strokeWeight(1);
+    strokeWeight(2);
+    stroke(34, 0, 28);
     triangle(this.x - 25, this.y - 30, this.x - 25, this.y, this.x + 7, this.y - 15);
     triangle(this.x + 25, this.y - 30, this.x + 25, this.y, this.x - 7, this.y - 15);
     ellipse(this.x, this.y, this.r * 2);
@@ -331,9 +349,9 @@ class Brick {
 
   draw() {
     push();
-    fill(194, 160, 126);
+    fill(255, 255, 193);
     strokeWeight(2);
-    stroke(82, 62, 42);
+    stroke(102, 43, 63);
     rect(this.x, this.y, this.w, this.h);
     pop();
   }
