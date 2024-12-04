@@ -1,15 +1,15 @@
 let paddle;
 let ball;
 let bricks;
-let lives = 5;
+let lives = 20;
 let score = 0;
 let gameState = "start";
+let resultMessage = "";
 let maxBallSpeed = 7;
 
 let speedBoostStage1 = false;
 let speedBoostStage2 = false;
 let speedBoostStage3 = false;
-
 let time = 0;
 
 function setup() {
@@ -43,7 +43,7 @@ function endScreen() {
   fill(255);
   textAlign(CENTER);
   textSize(32);
-  text("Game Over", 400, 250);
+  text(resultMessage, 400, 250);
   textSize(20);
   text(`Your Score: ${score}`, 400, 300);
   text("Press ENTER to play again", 400, 350);
@@ -84,6 +84,9 @@ function playGame() {
       ball.reset();
     } else {
       gameState = "end";
+      if (score <= 49) {
+        resultMessage = "Oh no! You lost!";
+      }
     }
   }
 
@@ -93,6 +96,7 @@ function playGame() {
 
   // when no bricks left
   if (bricks.length === 0) {
+    resultMessage = "Congratulations! You won!";
     gameState = "end";
   }
 }
@@ -118,11 +122,12 @@ function keyPressed() {
 
 // reset game
 function resetGame() {
-  lives = 5;
+  lives = 20;
   score = 0;
   ball.reset();
   bricks = createBricks();
   paddle.reset();
+  time = 0;
   gameState = "game";
 }
 
