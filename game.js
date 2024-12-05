@@ -1,5 +1,5 @@
 let paddle;
-let ball;
+let catBall;
 let bricks;
 let lives = 5;
 let score = 0;
@@ -21,7 +21,7 @@ var endScreenBackground;
 function setup() {
   createCanvas(800, 600);
   paddle = new Paddle();
-  ball = new Ball();
+  catBall = new CatBall();
   bricks = createBricks();
   startScreenBackground = loadImage("startScreenBackground.jpg");
   gameScreenBackground = loadImage("gameScreenBackground.jpg");
@@ -78,19 +78,19 @@ function playGame() {
   paddle.draw();
   paddle.updatePosition();
 
-  ball.draw();
-  ball.updatePosition();
-  ball.checkCollision(paddle);
+  catBall.draw();
+  catBall.updatePosition();
+  catBall.checkCollision(paddle);
 
-  // Game Mechanichs
+  // Game Mechanics
   for (let i = bricks.length - 1; i >= 0; i--) {
     bricks[i].draw();
 
     // check if the ball hits the bricks
-    if (ball.hits(bricks[i])) {
+    if (catBall.hits(bricks[i])) {
       
       // reversing the ball's direction
-      ball.reverse();
+      catBall.reverse();
 
       // removing the brick because it was hit by the ball
 
@@ -106,11 +106,11 @@ function playGame() {
   displayScoreAndLives();
 
   // for when the ball is outside of screen
-  if (ball.isOutsideOfScreen()) {
+  if (catBall.isOutsideOfScreen()) {
     lives--;
-    ball.color = color(random(255), random(255), random(255));
+    catBall.color = color(random(255), random(255), random(255));
     if (lives > 0) {
-      ball.reset();
+      catBall.reset();
     } else {
       gameState = "end";
       if (score <= 49) {
@@ -154,7 +154,7 @@ function keyPressed() {
 function resetGame() {
   lives = 5;
   score = 0;
-  ball.reset();
+  catBall.reset();
   bricks = createBricks();
   paddle.reset();
   time = 0;
@@ -244,7 +244,7 @@ class Paddle {
   }
 }
 
-class Ball {
+class CatBall {
   constructor() {
     this.r = 25;
 
