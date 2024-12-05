@@ -29,7 +29,6 @@ function setup() {
 }
 
 function draw() {
-  background(0);
   if (gameState === "start") {
     image(startScreenBackground, 0, -200, 800, 800);
     startScreen();
@@ -67,6 +66,8 @@ function endScreen() {
   textSize(30);
   text(resultMessage, 400, 250);
   textSize(20);
+
+  // the usage of the score display was suggested by ChatGPT: https://chatgpt.com/share/6751bed6-e4bc-8002-88fa-f4a615a33d86 
   text(`Your Score: ${score}`, 400, 280);
   textSize(13);
   text("Press ENTER to play again", 400, 310);
@@ -87,14 +88,18 @@ function playGame() {
 
     // check if the ball hits the bricks
     if (ball.hits(bricks[i])) {
-      //reversing the direction
+      
+      // reversing the ball's direction
       ball.reverse();
 
-      //removing the brick because it was hit by the ball
+      // removing the brick because it was hit by the ball
+
+      // the usage of the next function was suggested by ChatGPT: https://chatgpt.com/share/6751bc2f-beb0-8002-bdd9-c84d17fd400a 
       bricks.splice(i, 1);
 
+      // when one brick disappears, then score increases by 1 and paddle size reduces
       score++;
-      increaseDifficulty();
+      reducePaddleSize();
     }
   }
 
@@ -115,7 +120,6 @@ function playGame() {
   }
 
   time += 1; // ~1 ms, time = 100 is roughly 1 second
-  // text(`Time: ${time}`, 50, 20);
   createPowerups();
 
   // when no bricks left
@@ -125,6 +129,8 @@ function playGame() {
   }
 }
 
+
+// idea of creating power ups was suggested by Albert Asratyan, but the code was written by us
 function createPowerups() {
   // after ~5 seconds
   if (time > 500) {
@@ -162,12 +168,11 @@ function createBricks() {
   let brickHeight = 20;
 
   // create bricks for fixed number of bricks
+
   // the next 5 lines the code was used and changed from this website: https://editor.p5js.org/aabhay.kashyap/sketches/TpkMpovUj
   for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 10; j++) {
-      bricks.push(
-        new Brick(j * brickWidth, i * brickHeight, brickWidth, brickHeight)
-      );
+      bricks.push(new Brick(j * brickWidth, i * brickHeight, brickWidth, brickHeight));
     }
   }
 
@@ -184,13 +189,15 @@ function displayScoreAndLives() {
 }
 
 // reduce paddle size when score increases
-// the next 5 lines were taken from the conversation with chatgpt
-function increaseDifficulty() {
+
+// the next 5 lines were taken from the conversation with ChatGPT: https://chatgpt.com/share/674f0e4a-bed4-8002-91c4-835af7d70c49 
+function reducePaddleSize() {
   if (score % 5 === 0 && score > 0) {
     paddle.reduceSize();
   }
 }
 
+// methods (updatePosition, checkCollision) of the following classes were taken from this website and modified by us: https://editor.p5js.org/aabhay.kashyap/sketches/TpkMpovUj
 class Paddle {
   constructor() {
     this.defaultWidth = 150;
@@ -240,6 +247,7 @@ class Paddle {
 class Ball {
   constructor() {
     this.r = 25;
+
     // the next line was taken fron this website: https://editor.p5js.org/hosken/sketches/I_4VSTotf
     this.color = color(random(255), random(255), random(255));
     this.reset();
@@ -298,6 +306,7 @@ class Ball {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
+    // updating speed when certain time passed
     if (speedBoostStage1 === true) {
       this.x += this.xSpeed * 0.2;
       this.y += this.ySpeed * 0.2;
@@ -311,6 +320,7 @@ class Ball {
       this.y += this.ySpeed * 0.2;
     }
 
+    // ball changes directions when bouncing off the walls
     if (this.x < 0 || this.x > 800) {
       this.xSpeed *= -1;
     }
